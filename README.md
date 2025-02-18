@@ -76,7 +76,7 @@ cd Splat-SLAM
 conda create --name splat-slam python=3.8
 conda activate splat-slam
 ```
-3. Install CUDA 12.4 using conda and pytorch
+3. Install CUDA 11.8 using conda and pytorch
 ```bash
 conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
@@ -99,9 +99,9 @@ python -c "import torch; import lietorch; import simple_knn; import diff_gaussia
 ```
 6. Now install the droid backends and the other requirements
 ```bash
-python -m pip install -e .
-python -m pip install -r requirements.txt
-python -m pip install pytorch-lightning==1.9 --no-deps
+pip install -e .
+pip install -r requirements.txt
+pip install pytorch-lightning==1.9 --no-deps
 ```
 7. Download pretrained model.
 Download the pretained models from [Google Drive](https://drive.google.com/file/d/1oZbVPrubtaIUjRRuT8F-YjjHBW-1spKT/view?usp=drive_link), unzip them inside the `pretrained` folder. The `middle_fine.pt` decoder will not be used and can be removed.

@@ -3,6 +3,8 @@ GO-SLAM
 *.pth
 *.pt
 *.pyc
+*.so
+*.ckpt
 keyframeidx.txt
 SUMMARY
 .vscode
@@ -16,3 +18,4 @@ wandb
 cull_replica_mesh
 *.egg*
 euler/
+datasets/
