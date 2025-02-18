@@ -73,25 +73,25 @@ cd Splat-SLAM
 ```
 2. Creating a new conda environment. 
 ```bash
-conda create --name splat-slam python=3.10
+conda create --name splat-slam python=3.8
 conda activate splat-slam
 ```
 3. Install CUDA 12.4 using conda and pytorch
 ```bash
-conda install nvidia/label/cuda-12.4.1::cuda-toolkit
-conda install nvidia/label/cuda-12.4.1::cuda-libraries
-conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 Now make sure that `which python` points to the correct python executable. Also test that cuda is available `python -c "import torch; print(torch.cuda.is_available())`.
 4. Install the remaining dependencies.
 ```bash
+pip install ninja
 export CUDA_HOME=$CONDA_PREFIX
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib:$LD_LIBRARY_PATH
-python -m pip install -e thirdparty/lietorch/
-python -m pip install -e thirdparty/diff-gaussian-rasterization-w-pose/
-python -m pip install -e thirdparty/simple-knn/
-python -m pip install -e thirdparty/evaluate_3d_reconstruction_lib/
+pip install -e thirdparty/lietorch/
+pip install -e thirdparty/diff-gaussian-rasterization-w-pose/
+pip install -e thirdparty/simple-knn/
+pip install -e thirdparty/evaluate_3d_reconstruction_lib/
 ```
 5. Check installation.
 ```bash
