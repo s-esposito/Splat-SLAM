@@ -76,10 +76,10 @@ cd Splat-SLAM
 conda create --name splat-slam python=3.10
 conda activate splat-slam
 ```
-3. Install CUDA 11.7 using conda and pytorch 1.12
+3. Install CUDA 12.4 using conda and pytorch
 ```bash
-conda install conda-forge::cudatoolkit-dev=11.7.0
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install nvidia/label/cuda-12.4.1::cuda-toolkit
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
 ```
 > Now make sure that "which python" points to the correct python
 executable. Also test that cuda is available
