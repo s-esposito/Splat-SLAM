@@ -9,7 +9,7 @@
 	url = https://github.com/eriksandstroem/evaluate_3d_reconstruction_lib.git
 [submodule "thirdparty/lietorch"]
 	path = thirdparty/lietorch
-	url = https://github.com/princeton-vl/lietorch.git
+	url = https://github.com/s-esposito/lietorch
 [submodule "thirdparty/simple-knn"]
 	path = thirdparty/simple-knn
 	url = https://github.com/camenduru/simple-knn.git

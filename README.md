@@ -79,39 +79,31 @@ conda activate splat-slam
 3. Install CUDA 12.4 using conda and pytorch
 ```bash
 conda install nvidia/label/cuda-12.4.1::cuda-toolkit
+conda install nvidia/label/cuda-12.4.1::cuda-libraries
 conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
 ```
-> Now make sure that "which python" points to the correct python
-executable. Also test that cuda is available
-python -c "import torch; print(torch.cuda.is_available())"
-
-4. Update depth rendering hyperparameter in thirparty library
-  > By default, the gaussian rasterizer does not render gaussians that are closer than 0.2 (meters) in front of the camera. In our monocular setting, where the global scale is ambiguous, this can lead to issues during rendering. Therefore, we adjust this threshold to 0.001 instead of 0.2. Change the value at [this](https://github.com/rmurai0610/diff-gaussian-rasterization-w-pose/blob/43e21bff91cd24986ee3dd52fe0bb06952e50ec7/cuda_rasterizer/auxiliary.h#L154) line, i.e. it should read
+Now make sure that `which python` points to the correct python executable. Also test that cuda is available `python -c "import torch; print(torch.cuda.is_available())`.
+4. Install the remaining dependencies.
 ```bash
-if (p_view.z <= 0.001f)// || ((p_proj.x < -1.3 || p_proj.x > 1.3 || p_proj.y < -1.3 || p_proj.y > 1.3)))
-```
-5. Install the remaining dependencies.
-```bash
+export CUDA_HOME=$CONDA_PREFIX
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib:$LD_LIBRARY_PATH
 python -m pip install -e thirdparty/lietorch/
 python -m pip install -e thirdparty/diff-gaussian-rasterization-w-pose/
 python -m pip install -e thirdparty/simple-knn/
 python -m pip install -e thirdparty/evaluate_3d_reconstruction_lib/
 ```
-
-6. Check installation.
+5. Check installation.
 ```bash
-python -c "import torch; import lietorch; import simple_knn; import
-diff_gaussian_rasterization; print(torch.cuda.is_available())"
+python -c "import torch; import lietorch; import simple_knn; import diff_gaussian_rasterization; print(torch.cuda.is_available())"
 ```
-
-7. Now install the droid backends and the other requirements
+6. Now install the droid backends and the other requirements
 ```bash
 python -m pip install -e .
 python -m pip install -r requirements.txt
 python -m pip install pytorch-lightning==1.9 --no-deps
 ```
-
-8. Download pretrained model.
+7. Download pretrained model.
 Download the pretained models from [Google Drive](https://drive.google.com/file/d/1oZbVPrubtaIUjRRuT8F-YjjHBW-1spKT/view?usp=drive_link), unzip them inside the `pretrained` folder. The `middle_fine.pt` decoder will not be used and can be removed.
 <details>
   <summary>[Directory structure of pretrained (click to expand)]</summary>
