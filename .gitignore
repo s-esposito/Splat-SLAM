@@ -19,3 +19,4 @@ cull_replica_mesh
 *.egg*
 euler/
 datasets/
+output/
